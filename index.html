@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Text Editor </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2> Text Editor</h2>
+
+  <div id="toolbar">
+    <button data-cmd="bold"><b>B</b></button>
+    <button data-cmd="italic"><i>I</i></button>
+    <button data-cmd="underline"><u>U</u></button>
+
+    <select id="font-size">
+      <option value="3">Size</option>
+      <option value="2">Small</option>
+      <option value="3">Normal</option>
+      <option value="5">Large</option>
+      <option value="7">Huge</option>
+    </select>
+
+    <input type="color" id="text-color">
+    <input type="color" id="highlight-color" title="Highlight">
+
+    <button data-cmd="justifyLeft">Left</button>
+    <button data-cmd="justifyCenter">Center</button>
+    <button data-cmd="justifyRight">Right</button>
+
+    <button data-cmd="insertUnorderedList">• List</button>
+    <button data-cmd="insertOrderedList">1. List</button>
+
+    <button id="insert-link">Link</button>
+    <button id="insert-image">Image</button>
+    <button id="insert-code">Code</button>
+
+    <button data-cmd="undo">Undo</button>
+    <button data-cmd="redo">Redo</button>
+    <button data-cmd="removeFormat">Clear</button>
+  </div>
+
+  <div id="editor" contenteditable="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
