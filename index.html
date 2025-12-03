@@ -1,47 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Text Editor </title>
+  <title>Text Editor / محرر النصوص</title>
   <link rel="stylesheet" href="style.css">
+  <!-- jsPDF and html2pdf libraries for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-  <h2> Text Editor</h2>
-
-  <div id="toolbar">
-    <button data-cmd="bold"><b>B</b></button>
-    <button data-cmd="italic"><i>I</i></button>
-    <button data-cmd="underline"><u>U</u></button>
-
-    <select id="font-size">
-      <option value="3">Size</option>
-      <option value="2">Small</option>
-      <option value="3">Normal</option>
-      <option value="5">Large</option>
-      <option value="7">Huge</option>
-    </select>
-
-    <input type="color" id="text-color">
-    <input type="color" id="highlight-color" title="Highlight">
-
-    <button data-cmd="justifyLeft">Left</button>
-    <button data-cmd="justifyCenter">Center</button>
-    <button data-cmd="justifyRight">Right</button>
-
-    <button data-cmd="insertUnorderedList">• List</button>
-    <button data-cmd="insertOrderedList">1. List</button>
-
-    <button id="insert-link">Link</button>
-    <button id="insert-image">Image</button>
-    <button id="insert-code">Code</button>
-
-    <button data-cmd="undo">Undo</button>
-    <button data-cmd="redo">Redo</button>
-    <button data-cmd="removeFormat">Clear</button>
+  <div class="header">
+    <h2 id="page-title">Text Editor</h2>
+    <button id="language-toggle" class="lang-btn">العربية</button>
   </div>
 
-  <div id="editor" contenteditable="true"></div>
+  <div id="toolbar">
+    <button data-cmd="bold" title="Bold / غامق"><b>B</b></button>
+    <button data-cmd="italic" title="Italic / مائل"><i>I</i></button>
+    <button data-cmd="underline" title="Underline / تحته خط"><u>U</u></button>
+
+    <select id="font-size">
+      <option value="3" data-en="Size" data-ar="الحجم">Size</option>
+      <option value="2" data-en="Small" data-ar="صغير">Small</option>
+      <option value="3" data-en="Normal" data-ar="عادي">Normal</option>
+      <option value="5" data-en="Large" data-ar="كبير">Large</option>
+      <option value="7" data-en="Huge" data-ar="ضخم">Huge</option>
+    </select>
+
+    <input type="color" id="text-color" title="Text Color / لون النص" value="#000000">
+    <input type="color" id="highlight-color" title="Highlight / تمييز" value="#ffff00">
+
+    <button data-cmd="justifyLeft" title="Align Left / محاذاة لليسار">⬅</button>
+    <button data-cmd="justifyCenter" title="Center / توسيط">⬛</button>
+    <button data-cmd="justifyRight" title="Align Right / محاذاة لليمين">➡</button>
+
+    <button data-cmd="insertUnorderedList" title="Bullet List / قائمة نقطية">•</button>
+    <button data-cmd="insertOrderedList" title="Numbered List / قائمة رقمية">1.</button>
+    <button id="insert-alpha-list" title="Alphabetical List / قائمة أبجدية">A.</button>
+
+    <button id="insert-link" data-en="🔗" data-ar="🔗" title="Insert Link / إدراج رابط">🔗</button>
+    <button id="insert-image" data-en="🖼" data-ar="🖼" title="Insert Image / إدراج صورة">🖼</button>
+    <button id="insert-code" data-en="</>" data-ar="</>" title="Insert Code / إدراج كود"><code>&lt;/&gt;</code></button>
+    
+    <button id="insert-punctuation" title="Special Punctuation / علامات ترقيم خاصة">«»</button>
+
+    <button data-cmd="undo" title="Undo / تراجع">↶</button>
+    <button data-cmd="redo" title="Redo / إعادة">↷</button>
+    <button data-cmd="removeFormat" title="Clear Format / مسح التنسيق">✖</button>
+    
+    <button id="save-pdf" class="special-btn" title="Save as PDF / حفظ كملف PDF">📄 <span data-en="PDF" data-ar="PDF">PDF</span></button>
+  </div>
+
+  <div id="editor" contenteditable="true" placeholder="Start typing... / ابدأ الكتابة..."></div>
 
   <script src="script.js"></script>
 </body>
