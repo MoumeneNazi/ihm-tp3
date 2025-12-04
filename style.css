@@ -104,13 +104,11 @@ input[type="color"] {
   outline: 2px solid #2196F3;
 }
 
-/* Alpha list styling */
 .alpha-list {
   list-style-type: lower-alpha;
   margin-left: 20px;
 }
 
-/* RTL support for Arabic */
 [dir="rtl"] {
   text-align: right;
   direction: rtl;
